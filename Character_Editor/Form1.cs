@@ -16,6 +16,7 @@ namespace Character_Editor
         {
             InitializeComponent();
             this.comboBoxRace.DataSource = Enum.GetValues(typeof(CharacterRace));
+            
         }
 
          
@@ -133,6 +134,75 @@ namespace Character_Editor
             numericUpDownKnowledge.Value = rand.Next(10, 90);
             numericUpDownLeadership.Value = rand.Next(10, 90);
             numericUpDownStealth.Value = rand.Next(10, 90);
+        }
+
+        private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // Create a size file dialog
+            SaveFileDialog dlg = new SaveFileDialog();
+            // Set the filter strings
+            dlg.Filter = "All Files(*.*)|*.*|csv(*.csv)|*.csv";
+            // Set the default extension
+            dlg.DefaultExt = "csv";
+            // Display the dialog to the user
+            if (DialogResult.OK == dlg.ShowDialog())
+            {
+                // Open a stream for writing
+                System.IO.StreamWriter writer = new System.IO.StreamWriter(dlg.FileName);
+                // Write the string
+               foreach(Character value in listBoxCharacter.Items)
+               {
+                   writer.WriteLine(value.ToFile());
+               }
+                // Close the stream
+                writer.Close();
+            }
+        }
+
+        private void openToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            listBoxCharacter.Items.Clear();
+            // Create an open file dialog
+            OpenFileDialog dlg = new OpenFileDialog();
+            // Set the filter strings
+            dlg.Filter = "All Files(*.*)|*.*|csv(*.csv)|*.csv";
+            // Display the dialog to the user
+            if (DialogResult.OK == dlg.ShowDialog())
+            {
+                // Open a stream for reading
+                System.IO.StreamReader reader = new System.IO.StreamReader(dlg.FileName);
+                // Write a line to the stream
+                while(reader.Peek() >= 0 )
+                {
+                    string[] subs = reader.ReadLine().Split(new Char[] { ',' });
+                    Character c = new Character();
+
+                    c.FirstName = subs[0];
+                    c.LastName = subs[1];
+                    c.Age = decimal.Parse(subs[2]);
+                    c.Race = (CharacterRace)Enum.Parse(typeof(CharacterRace), subs[3]);
+
+                    CharacterSkills cskills = new CharacterSkills();
+                    cskills.Bravery = decimal.Parse(subs[4]);
+                    cskills.Cheating = decimal.Parse(subs[5]);
+                    cskills.Disguise = decimal.Parse(subs[6]);
+                    cskills.Endurance = decimal.Parse(subs[7]);
+                    cskills.Healing = decimal.Parse(subs[8]);
+                    cskills.Knowledge = decimal.Parse(subs[9]);
+                    cskills.Leadership = decimal.Parse(subs[10]);
+                    cskills.Stealth = decimal.Parse(subs[11]);
+                    c.Skills = cskills;
+                   listBoxCharacter.Items.Add(c);
+                }
+                
+                // Close the stream
+                reader.Close();
+            }
+        }
+
+        private void newToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            listBoxCharacter.Items.Clear();
         }
 
 

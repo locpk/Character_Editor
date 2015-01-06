@@ -70,5 +70,15 @@ namespace Character_Editor
             get { return stealth; }
             set { stealth = value; }
         }
+        public override string ToString()
+        {
+            return bravery + "\t" + cheating + "\t" + disguise + "\t" + endurance
+                 + "\t" + healing + "\t" + knowledge + "\t" + leadership + "\t" + stealth;
+        }
+        public string ToFile()
+        {
+            return bravery + "," + cheating + "," + disguise + "," + endurance
+                 + "," + healing + "," + knowledge + "," + leadership + "," + stealth;
+        }
     }
 }

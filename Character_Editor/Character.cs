@@ -60,7 +60,13 @@ namespace Character_Editor
 
         public override string ToString()
         {
-            return firstname + "\t" + lastname + "\t" + age + "\t" + race;
+            return firstname + "\t" + lastname + "\t" + age + "\t" + race
+                + "\t" + skills;
+        }
+        public string ToFile()
+        {
+            return firstname + "," + lastname + "," + age + "," + race
+                + "," + skills.ToFile();
         }
     }
 }
