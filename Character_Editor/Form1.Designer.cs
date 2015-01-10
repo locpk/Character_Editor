@@ -147,6 +147,7 @@
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
             this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.exitToolStripMenuItem.Text = "E&xit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // editToolStripMenuItem
             // 
@@ -203,7 +204,7 @@
             this.skillToolStripMenuItem.Checked = true;
             this.skillToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.skillToolStripMenuItem.Name = "skillToolStripMenuItem";
-            this.skillToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.skillToolStripMenuItem.Size = new System.Drawing.Size(95, 22);
             this.skillToolStripMenuItem.Text = "Skill";
             this.skillToolStripMenuItem.Click += new System.EventHandler(this.skillToolStripMenuItem_Click);
             // 

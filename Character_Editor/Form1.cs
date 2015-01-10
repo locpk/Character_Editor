@@ -161,7 +161,7 @@ namespace Character_Editor
 
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            listBoxCharacter.Items.Clear();
+            
             // Create an open file dialog
             OpenFileDialog dlg = new OpenFileDialog();
             // Set the filter strings
@@ -169,6 +169,7 @@ namespace Character_Editor
             // Display the dialog to the user
             if (DialogResult.OK == dlg.ShowDialog())
             {
+                listBoxCharacter.Items.Clear();
                 // Open a stream for reading
                 System.IO.StreamReader reader = new System.IO.StreamReader(dlg.FileName);
                 // Write a line to the stream
@@ -203,6 +204,11 @@ namespace Character_Editor
         private void newToolStripMenuItem_Click(object sender, EventArgs e)
         {
             listBoxCharacter.Items.Clear();
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
 
 
