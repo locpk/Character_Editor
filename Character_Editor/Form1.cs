@@ -173,7 +173,7 @@ namespace Character_Editor
                 // Open a stream for reading
                 System.IO.StreamReader reader = new System.IO.StreamReader(dlg.FileName);
                 // Write a line to the stream
-                while(reader.Peek() >= 0 )
+                while(reader.Peek() > -1 )
                 {
                     string[] subs = reader.ReadLine().Split(new Char[] { ',' });
                     Character c = new Character();
